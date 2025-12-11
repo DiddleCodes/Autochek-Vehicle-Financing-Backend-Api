@@ -1,0 +1,34 @@
+export enum LoanStatus {
+  PENDING = 'PENDING',
+  UNDER_REVIEW = 'UNDER_REVIEW',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+  DISBURSED = 'DISBURSED',
+  ACTIVE = 'ACTIVE',
+  COMPLETED = 'COMPLETED',
+  DEFAULTED = 'DEFAULTED',
+}
+export enum OfferStatus {
+  PENDING = 'PENDING',
+  ACCEPTED = 'ACCEPTED',
+  REJECTED = 'REJECTED',
+  EXPIRED = 'EXPIRED',
+}
+export enum ValuationStatus {
+  PENDING = 'PENDING',
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+}
+
+export enum ValuationSource {
+  EXTERNAL_API = 'EXTERNAL_API',
+  MANUAL = 'MANUAL',
+  SIMULATED = 'SIMULATED',
+}
+
+export enum EmploymentStatus {
+  EMPLOYED = 'EMPLOYED',
+  SELF_EMPLOYED = 'SELF-EMPLOYED',
+  UNEMPLOYED = 'UNEMPLOYED',
+  RETIRED = "RETIRED"
+}
