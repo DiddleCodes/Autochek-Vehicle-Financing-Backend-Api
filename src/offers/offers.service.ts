@@ -22,19 +22,14 @@ export class OffersService {
     private readonly offerRepository: Repository<Offer>,
   ) {}
 
-  /**
-   * Generate loan offers for a loan application
-   * Creates multiple offers with different terms
-   */
+  // Generate loan offers for a loan application
   async generateOffers(
     loanId: string,
     approvedAmount: number,
     preferredTerm = 48,
   ): Promise<Offer[]> {
-    this.logger.log(`Generating offers for loan ID: ${loanId}`);
-
     const offers: Partial<Offer>[] = [];
-
+    
     // Offer 1: Standard term with competitive rate
     const standardOffer = this.calculateOffer(
       loanId,
@@ -209,12 +204,7 @@ By accepting this offer, you agree to all terms and conditions stated above.
     return updatedOffer;
   }
 
-  /**
-   * Reject an offer
-   */
   async rejectOffer(id: string): Promise<Offer> {
-    this.logger.log(`Rejecting offer ID: ${id}`);
-
     const offer = await this.findOne(id);
 
     if (offer.status !== OfferStatus.PENDING) {
@@ -230,9 +220,7 @@ By accepting this offer, you agree to all terms and conditions stated above.
     return updatedOffer;
   }
 
-  /**
-   * Check for expired offers and update their status
-   */
+   // Check for expired offers and update their status
   async updateExpiredOffers(): Promise<number> {
     const result = await this.offerRepository
       .createQueryBuilder()

@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 import { Offer } from './offer.entity';
-import { LoanStatus } from './enums';
+import { EmploymentStatus, LoanStatus } from './enums';
 
 
 @Entity('loans')
@@ -45,16 +45,16 @@ export class Loan {
   applicantAddress?: string;
 
   @Column({ nullable: true })
-  employmentStatus?: string; // employed, self-employed, unemployed
+  employmentStatus?: EmploymentStatus; 
 
   @Column({ type: 'decimal', precision: 12, scale: 2, nullable: true })
   monthlyIncome?: number;
 
   @Column({ nullable: true })
-  creditScore?: number; // Credit score (300-850)
+  creditScore?: number; 
 
   @Column({ default: false })
-  isEligible: boolean; // Eligibility status
+  isEligible: boolean; 
 
   @Column({ type: 'text', nullable: true })
   eligibilityReason?: string; // Reason for eligibility decision
@@ -71,7 +71,7 @@ export class Loan {
   interestRate?: number; // Annual interest rate percentage
 
   @Column({ nullable: true })
-  loanTerm?: number; // Loan term in months
+  loanTerm?: number; // Loan term in months ( 12(1 year), 24, 36, 48, 60)
 
   @Column({ type: 'simple-json', nullable: true })
   metadata?: Record<string, any>; // Additional loan metadata

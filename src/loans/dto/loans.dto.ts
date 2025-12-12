@@ -86,15 +86,15 @@ export class CreateLoanDto {
 
   @ApiPropertyOptional({
     description: 'Employment status',
-    example: 'Employed',
+    example: 'EmploymentStatus.EMPLOYED',
     enum: EmploymentStatus
   })
   @IsOptional()
   @IsString()
-  employmentStatus?: string;
+  employmentStatus?: EmploymentStatus;
 
   @ApiPropertyOptional({
-    description: 'Monthly income in USD',
+    description: 'Monthly income in Naira',
     example: 5000,
     minimum: 0,
   })
@@ -115,7 +115,7 @@ export class CreateLoanDto {
   @IsNumber()
   @Min(300, { message: 'Credit score must be at least 300' })
   @Max(850, { message: 'Credit score cannot exceed 850' })
-  creditScore?: number;
+  creditScore?: number;                               // FICO standard
 
   @ApiPropertyOptional({
     description: 'Preferred loan term in months',

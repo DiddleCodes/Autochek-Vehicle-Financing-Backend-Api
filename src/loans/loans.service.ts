@@ -48,7 +48,7 @@ export class LoansService {
 
   /**
    * Creates a new loan application
-   and performs eligibility check and generates offers if eligible
+   and performs eligibility check and generates offers ONLY if eligible
    */
 
   async create(dto: CreateLoanDto, res: Response): Promise<Response> {
@@ -72,7 +72,7 @@ export class LoansService {
         finalValuation.estimatedValue,
       );
 
-      // Create loan record in DB
+      // Create loan record in sqlite db
       const loan = await this.loanRepository.save(
         this.loanRepository.create({
           ...dto,
@@ -274,10 +274,6 @@ export class LoansService {
     res: Response,
   ): Promise<Response> {
     try {
-      this.logger.log(
-        `Updating loan ${id} to status ${updateStatusDto.status}`,
-      );
-
       // Single DB fetch
       const loan = await this.loanRepository.findOne({
         where: { id },
@@ -292,8 +288,6 @@ export class LoansService {
 
       loan.status = updateStatusDto.status;
       const updatedLoan = await this.loanRepository.save(loan);
-
-      this.logger.log(`Loan ${id} status updated to ${loan.status}`);
 
       return res
         .status(HttpStatus.OK)

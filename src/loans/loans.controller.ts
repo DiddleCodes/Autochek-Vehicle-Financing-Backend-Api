@@ -90,7 +90,7 @@ export class LoansController {
   @ApiParam({ name: 'id',type: String})
   @ApiResponse({ description: 'Loan status updated successfully',})
   @ApiBadRequestResponse({  description: 'Invalid status transition'})
- async updateStatus(
+  async updateStatus(
     @Param('id') id: string,
     @Body() updateStatusDto: UpdateLoanStatusDto,
     res: Response,

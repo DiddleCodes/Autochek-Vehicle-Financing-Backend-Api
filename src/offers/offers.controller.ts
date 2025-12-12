@@ -29,8 +29,7 @@ export class OffersController {
   @ApiOperation({
     summary: 'Get offers for a loan',
     description:
-      'Retrieve all loan offers generated for a specific loan application. ' +
-      'Offers are ordered by interest rate (best rate first).',
+      'Retrieve all loan offers generated for a specific loan application. ',
   })
   @ApiParam({
     name: 'loanId',
@@ -45,11 +44,14 @@ export class OffersController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get offer by ID',
+  @ApiOperation({
+    summary: 'Get offer by ID',
     description: 'Retrieve detailed information about a specific loan offer.',
   })
-  @ApiParam({ name: 'id',  type: String, description: 'Offer ID' })
-  @ApiBadRequestResponse({ description: 'Offer details retrieved successfully'})
+  @ApiParam({ name: 'id', type: String, description: 'Offer ID' })
+  @ApiBadRequestResponse({
+    description: 'Offer details retrieved successfully',
+  })
   async findOne(@Param('id') id: string) {
     return await this.offersService.findOne(id);
   }
@@ -58,9 +60,9 @@ export class OffersController {
   @ApiOperation({
     summary: 'Accept loan offer',
     description:
-      'Accept a loan offer. This will automatically reject all other pending offers '
+      'Accept a loan offer. This will automatically reject all other pending offers ',
   })
-  @ApiParam({ name: 'id',  type: String })
+  @ApiParam({ name: 'id', type: String })
   @ApiResponse({
     description: 'Offer accepted successfully',
   })
@@ -78,10 +80,7 @@ export class OffersController {
       'Reject a loan offer. Offer must be in pending status. ' +
       'This does not affect other offers for the same loan.',
   })
-  @ApiParam({
-    name: 'id',
-    type: String,
-  })
+  @ApiParam({  name: 'id', type: String,})
   @ApiResponse({
     status: 200,
     description: 'Offer rejected successfully',

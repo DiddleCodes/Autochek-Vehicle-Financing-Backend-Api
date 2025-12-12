@@ -9,6 +9,7 @@ import {
   OfferStatus,
   ValuationSource,
   ValuationStatus,
+  EmploymentStatus,
 } from '../entities/enums';
 
 /**
@@ -25,7 +26,7 @@ const AppDataSource = new DataSource({
 });
 
 async function seed() {
-  console.log(' Starting database seeding...');
+  console.log('🌱 Starting database seeding...');
 
   try {
     await AppDataSource.initialize();
@@ -165,7 +166,7 @@ async function seed() {
         applicantAge: 32,
         applicantEmail: 'john.doe@example.com',
         applicantPhone: '+1234567890',
-        employmentStatus: 'Employed',
+        employmentStatus: EmploymentStatus.EMPLOYED,
         monthlyIncome: 5500,
         creditScore: 720,
         isEligible: true,
@@ -182,7 +183,7 @@ async function seed() {
         applicantAge: 28,
         applicantEmail: 'jane.smith@example.com',
         applicantPhone: '+1234567891',
-        employmentStatus: 'Self-Employed',
+        employmentStatus: EmploymentStatus.SELF_EMPLOYED,
         monthlyIncome: 4800,
         creditScore: 680,
         isEligible: true,
@@ -198,7 +199,7 @@ async function seed() {
         applicantAge: 45,
         applicantEmail: 'bob.johnson@example.com',
         applicantPhone: '+1234567892',
-        employmentStatus: 'Employed',
+        employmentStatus: EmploymentStatus.EMPLOYED,
         monthlyIncome: 7200,
         creditScore: 750,
         isEligible: true,
@@ -214,7 +215,7 @@ async function seed() {
         applicantAge: 23,
         applicantEmail: 'alice.w@example.com',
         applicantPhone: '+1234567893',
-        employmentStatus: 'Employed',
+        employmentStatus: EmploymentStatus.EMPLOYED,
         monthlyIncome: 3200,
         creditScore: 580,
         isEligible: false,
@@ -282,8 +283,8 @@ async function seed() {
     ]);
     console.log(`✅ Created ${offers.length} loan offers`);
 
-    console.log('\n🎉 Database seeding completed successfully!');
-    console.log('\n📊 Summary:');
+    console.log(' Database seeding completed successfully!');
+    console.log(' Summary:');
     console.log(`   - Vehicles: ${vehicles.length}`);
     console.log(`   - Valuations: ${valuations.length}`);
     console.log(`   - Loans: ${loans.length}`);
@@ -296,7 +297,7 @@ async function seed() {
 
     await AppDataSource.destroy();
   } catch (error) {
-    console.error(' Error seeding database:', error);
+    console.error('Error seeding database:', error);
     process.exit(1);
   }
 }

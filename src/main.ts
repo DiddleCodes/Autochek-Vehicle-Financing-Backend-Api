@@ -25,7 +25,7 @@ async function bootstrap() {
   // Global validation pipe for automatic DTO validation
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // Strip properties that don't have decorators
+      whitelist: true, 
       forbidNonWhitelisted: true, // Throw error if non-whitelisted properties are present
       transform: true, // Automatically transform payloads to DTO instances
       transformOptions: {
